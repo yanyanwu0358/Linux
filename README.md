@@ -201,10 +201,5 @@ application.secret_key = 'Add your secret key'  `
  2. An older submission on the same project. Not everything : https://github.com/callforsky/udacity-linux-configuration 
  3. How to deploy a flask application on Lightsail: 
 https://hk.saowen.com/a/0a0048ca7141440d0553425e8df46b16cdf4c13f50df4c5888256393d34bb1b9
-
-bmission on the same project. It's for python 2. Changes would required to make it work for pthon 3: https://github.com/hicham-alaoui/ha-linux-server-config 
- 2. An older submission on the same project. Not everything : https://github.com/callforsky/udacity-linux-configuration 
- 3. How to deploy a flask application on Lightsail: 
-https://hk.saowen.com/a/0a0048ca7141440d0553425e8df46b16cdf4c13f50df4c5888256393d34bb1b9
 4. How to add path of a python file within another python file: https://blender.stackexchange.com/questions/31964/problem-with-paths-in-my-script-relative-to-local-python-file](https://blender.stackexchange.com/questions/31964/problem-with-paths-in-my-script-relative-to-local-python-file)
 

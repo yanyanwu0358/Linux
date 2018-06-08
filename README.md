@@ -195,10 +195,10 @@ application.secret_key = 'Add your secret key'
 `sudo chmod -R 777 /var/www/catalog/catalog/static/images`
 
 - Helpful command in psql:
-`\c dbname;` (will connect to the db)
-`Delete from tablename;` (will delete all the rows in a table)
-`\d`  (describe)
-`dropdb dbname;` (will delete the database)
+	-	`\c dbname;` (will connect to the db)
+	-	`Delete from tablename;` (will delete all the rows in a table)
+	-	`\d`  (describe)
+	-	`dropdb dbname;` (will delete the database)
 
 ## List of third-party resources used to complete this project
  1. A recent submission on the same project. It's for python 2. Changes would required to make it work for pthon 3: https://github.com/hicham-alaoui/ha-linux-server-config 

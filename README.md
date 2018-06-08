@@ -187,12 +187,11 @@ application.secret_key = 'Add your secret key'
 
 ## Useful tips for this project
 - Discard local changes for a specific file by running `git checkout filename` before pull the updates from github `$ git pull origin master`
-- When import library from another python file in the folder, would need to add the catalog folder name in front of the python file name. For example: `from catalog.database_setup import Base, Category, Item, User, VisitorVoting`
 - If there were errors running the site, used the command below to see what it is:
 `sudo tail -f /var/log/apache2/error.log`
 - To import the other python file in the folder you need to include the parent folder name. Say your __init__.py and your python file both under parent folder catalog, inside __init__.py if you wanted to import places.py file, you would need to write:
 `from catalog.places import app as application. `See details here: [http://mikegrouchy.com/blog/2012/05/be-pythonic-__init__py.html](http://mikegrouchy.com/blog/2012/05/be-pythonic-__init__py.html)
--For the image folder, we need to give all permissions so users can save images files to the folder.
+- For the image folder, we need to give all permissions so users can save images files to the folder.
 `sudo chmod -R 777 /var/www/catalog/catalog/static/images`
 
 - Helpful command in psql:

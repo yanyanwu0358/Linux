@@ -112,9 +112,9 @@ Use  Amazon Lightsail to set up  a baseline Ubuntu Linux server instance and  to
 ### 13. Update the paths in the main python files:
 - Rename the cloned application.py python file from its current name to __init__py
 - In places.py file, update the path to the "client_secrets.json" file by adding the code below:
- `current_file_path = __file__`
- `current_file_dir = os.path.dirname(__file__)`
-`other_file_path = os.path.join(current_file_dir, "client_secrets.json")`
+ `current_file_path = __file__    
+  current_file_dir = os.path.dirname(__file__)   
+  other_file_path = os.path.join(current_file_dir, "client_secrets.json")  `
 ### 14. Set up the database
 - Install PostgreSQL : `$ sudo apt-get install postgresql`
 - Login as user "postgres": `$ sudo su - postgres`
@@ -130,45 +130,45 @@ Use  Amazon Lightsail to set up  a baseline Ubuntu Linux server instance and  to
 ### 15. Create a new Virtual Host
 - Create the catalog.conf file: `$ sudo nano /etc/apache2/sites-available/catalog.conf`
 - Paste the text below inside the catalog.conf file:
- `<VirtualHost *:80>
-        ServerName 18.220.11.125
-        ServerAdmin [ha@mail.com](mail.com)
-        WSGIScriptAlias /` `/var/www/catalog/catalog.wsgi
-        <Directory /var/www/catalog/catalog>
-                Order allow,deny
-                Allow from all
-        </Directory>
-        Alias /static` `/var/www/catalog/catalog/static
-        <Directory /var/www/catalog/static/>
-                Order allow,deny
-                Allow from all
-        </Directory>`
- `       Alias /static/images /var/www/catalog/catalog/static/images
-        <Directory /var/www/catalog/catalog/static/images>
-                Order allow,deny
-                Allow from all
-        </Directory>`
-   `     Alias /templates /var/www/catalog/catalog/templates
-        <Directory /var/www/catalog/catalog/templates>
-                Order allow,deny
-                Allow from all
-        </Directory>`
-`ErrorLog ${APACHE_LOG_DIR}/error.log
-        LogLevel warn
-        CustomLog ${APACHE_LOG_DIR}/access.log combined
- </VirtualHost>`
+ `<VirtualHost *:80>  
+        ServerName 18.220.11.125  
+        ServerAdmin [ha@mail.com](mail.com)  
+        WSGIScriptAlias /` `/var/www/catalog/catalog.wsgi  
+        <Directory /var/www/catalog/catalog>  
+                Order allow,deny  
+                Allow from all  
+        </Directory>  
+        Alias /static/var/www/catalog/catalog/static  
+        <Directory /var/www/catalog/static/>  
+                Order allow,deny  
+                Allow from all  
+        </Directory>    
+       Alias /static/images /var/www/catalog/catalog/static/images  
+        <Directory /var/www/catalog/catalog/static/images>  
+                Order allow,deny  
+                Allow from all  
+        </Directory>  
+      Alias /templates /var/www/catalog/catalog/templates  
+        <Directory /var/www/catalog/catalog/templates>  
+                Order allow,deny  
+                Allow from all  
+        </Directory>    
+ErrorLog ${APACHE_LOG_DIR}/error.log  
+        LogLevel warn  
+        CustomLog ${APACHE_LOG_DIR}/access.log combined  
+ </VirtualHost>  `  
 - Disable the default virtual host: `$ sudo a2dissite 000-default.conf`
 - Enable the new virtual host: `$ sudo a2ensite catalog.conf`
 ### 16.	Create the wsgi file for the app.
 The wsgi file sits inside the parent catalog directory: `$ sudo nano /var/www/catalog/catalog.wsgi`
 Paste the text below inside the catalog.wsgi file (in my case, inside my main python file __init__.py under catalog folder, the name of the application is application):
-`import sys`  
-`import logging ` 
-`logging.basicConfig(stream=sys.stderr)  
-sys.path.insert(0,"/var/www/catalog/")`  `
+`import sys    
+import logging    
+logging.basicConfig(stream=sys.stderr)   
+sys.path.insert(0,"/var/www/catalog/")   `
 
-`from catalog import application as application ` 
-`application.secret_key = 'Add your secret key'  `
+`from catalog import application as application     
+application.secret_key = 'Add your secret key'    `
 
 ### 17. Change the secret key credentials for Google sign in
 - Get the Host Name for the public IP address (e.g., 18.220.11.125) from site: http://www.hcidata.info/host2ip.htm . In my case it is: ec2-18-220-11-125.us-east-2.compute.amazonaws.com

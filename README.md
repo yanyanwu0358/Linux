@@ -182,6 +182,7 @@ application.secret_key = 'Add your secret key'
 - Log into: https://developers.facebook.com/
 - Add http://18.220.11.125 and “http://ec2-18-220-11-125.us-east-2.compute.amazonaws.com”  to the field of "App Domains"
 ### 19. Launch the app in the browser
+-  Start Apache2 service with the command: `$ sudo service apache2 restart`
 - Use the Host Name address http://ec2-18-220-11-125.us-east-2.compute.amazonaws.com (not just the public IP e.g., 18.220.11.125).
 
 ## Useful tips for this project

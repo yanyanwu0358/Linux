@@ -130,15 +130,16 @@ Use  Amazon Lightsail to set up  a baseline Ubuntu Linux server instance and  to
 ### 15. Create a new Virtual Host
 - Create the catalog.conf file: `$ sudo nano /etc/apache2/sites-available/catalog.conf`
 - Paste the text below inside the catalog.conf file:
- `<VirtualHost *:80>  
+```
+<VirtualHost *:80>  
         ServerName 18.220.11.125  
         ServerAdmin [ha@mail.com](mail.com)  
-        WSGIScriptAlias /` `/var/www/catalog/catalog.wsgi  
+        WSGIScriptAlias / /var/www/catalog/catalog.wsgi
         <Directory /var/www/catalog/catalog>  
                 Order allow,deny  
                 Allow from all  
         </Directory>  
-        Alias /static/var/www/catalog/catalog/static  
+        Alias /static/var/www/catalog/catalog/static 
         <Directory /var/www/catalog/static/>  
                 Order allow,deny  
                 Allow from all  
@@ -152,23 +153,26 @@ Use  Amazon Lightsail to set up  a baseline Ubuntu Linux server instance and  to
         <Directory /var/www/catalog/catalog/templates>  
                 Order allow,deny  
                 Allow from all  
-        </Directory>    
-ErrorLog ${APACHE_LOG_DIR}/error.log  
+        </Directory>  
+          ErrorLog ${APACHE_LOG_DIR}/error.log  
         LogLevel warn  
         CustomLog ${APACHE_LOG_DIR}/access.log combined  
- </VirtualHost>  `  
+ </VirtualHost>
+```
 - Disable the default virtual host: `$ sudo a2dissite 000-default.conf`
 - Enable the new virtual host: `$ sudo a2ensite catalog.conf`
 ### 16.	Create the wsgi file for the app.
 The wsgi file sits inside the parent catalog directory: `$ sudo nano /var/www/catalog/catalog.wsgi`
 Paste the text below inside the catalog.wsgi file (in my case, inside my main python file __init__.py under catalog folder, the name of the application is application):
-`import sys    
+```
+import sys    
 import logging    
 logging.basicConfig(stream=sys.stderr)   
 sys.path.insert(0,"/var/www/catalog/")   `
 
-`from catalog import application as application     
-application.secret_key = 'Add your secret key'    `
+from catalog import application as application     
+application.secret_key = 'Add your secret key'    
+```
 
 ### 17. Change the secret key credentials for Google sign in
 - Get the Host Name for the public IP address (e.g., 18.220.11.125) from site: http://www.hcidata.info/host2ip.htm . In my case it is: ec2-18-220-11-125.us-east-2.compute.amazonaws.com

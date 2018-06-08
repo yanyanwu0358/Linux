@@ -2,7 +2,7 @@
 ### by Yanyan Wu @ *June 2018*
 
 ## Overview 
-Use  Amazon Lightsail to set up  a baseline Ubuntu Linux server instance and  to host the product catalog applications that we developed earlier in this course. 
+Use  Amazon Lightsail to set up  a baseline Ubuntu Linux server instance and  to host the product catalog application that we developed earlier in this course (Here is the github link to the product catalog application: https://github.com/yanyanwu0358/catalog ). 
 
 ## Project requirements 
 1. Change the SSH port from  **22**  to  **2200**. Make sure to configure the Lightsail firewall to allow it. 

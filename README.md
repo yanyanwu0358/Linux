@@ -48,31 +48,26 @@ Use  Amazon Lightsail to set up  a baseline Ubuntu Linux server instance and  to
 -   Under “Firewall” section, click on “+Add another” at the bottom of the ports list,
 -   Add ports as follow: Custom: TCP:2200, and Custom:UDP:123. (after adding these two ports the list should include at least four ports, 22, 80, 2200, and 123)
 -   Click “Save”
-### 5. Update Linux server
--   Connect to the linux server via either the Lightsail ssh connect or local ssh explained above step 3 with : `ssh -i ~/.ssh/LightsailDefaultPrivateKey-us-east-2.pem ubuntu@18.220.11.125` .
--   Update server packages using the command: `$ sudo apt-get update`
--   Upgrade the packages:` $ sudo apt-get upgrade`
--   Remove un-used packages: `$ sudo apt-get autoremove`-   enable unattended updates: `$ sudo apt install unattended-upgrades`
--   You can also install the user identifier package “finger” : `$ sudo apt-get install finger`
-### 6. Change ssh port from 22 to 2200
+
+### 5. Change ssh port from 22 to 2200
 -   Open the sshd_config file: `$ sudo nano /etc/ssh/sshd_config`
 -   Change the ssh port from 22 to 2200
 -   Save the change
 -   Restart the ssh service: `$ sudo service ssh restart`
-### 7. Update UFW (uncomplicated firewall)ports and status
+### 6. Update UFW (uncomplicated firewall)ports and status
 -   Allow the new port 2200: `$ sudo ufw allow 2200/tcp`
 -   Allow existing port 22: `$ sudo ufw allow 80/tcp`
 -   All UDP port 123: `$ sudo ufw allow 123/udp`
 -   Check if the ufw is active. If not, do so using the command: `$ sudo ufw enable`
 -   Restart the ssh service: $ sudo service ssh restart
-### 8. Configure the local timezone to UTC
+### 7. Configure the local timezone to UTC
 -   Configure the time zone: `$ sudo dpkg-reconfigure tzdata`
-### 9. Create the grader user
+### 8. Create the grader user
 -   Switch role to root urser using the command: `$sudo su -`
 -   Create the grader user: `$sudo adduser grader` 
 -   Specify the grader passcode
 -   Create a new grader file under the sudoers directory and assign sudo status to grader by creating the file using: `$ sudo nano /etc/sudoers.d/grader`, and type below into the file `grader ALL=(ALL:ALL) ALL`.
-### 10. Create a keypair for grader user
+### 9. Create a keypair for grader user
 -   Stay on grader user account, or ssh into the grader user account: `$ ssh grader@18.220.11.125 -p 2200 `
 -   Create a directory .ssh: `$ sudo mkdir .ssh`
 -   Create a file with the name authorized_keys inside the .ssh directory: `$ sudo touch /.ssh/authorized_keys.`
@@ -90,7 +85,8 @@ Use  Amazon Lightsail to set up  a baseline Ubuntu Linux server instance and  to
 - Change the owner from root to grader: `$ sudo chown -R grader:grader /home/grader/.ssh`
 - Restart the ssh service: `$ sudo service ssh restart`
 - Disconnect the server by `$ ~.` and then log back through port 2200: `$ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@18.220.11.125`
-### 11.  Install required packages including Python 3.
+### 10.  Install required packages including Python 3.
+-   You can also install the user identifier package “finger” : `$ sudo apt-get install finger`
 - Install git: `$ sudo apt-get install git`
 - `sudo apt-get update`
 - `sudo apt-get install apache2`
@@ -103,6 +99,12 @@ Use  Amazon Lightsail to set up  a baseline Ubuntu Linux server instance and  to
 -  `sudo apt-get install python3-requests`
 -  can use pip3 install to install the packages for python3
 - check python3 version: `python3 --version`
+
+### 11. Update Linux server
+-   Connect to the linux server via either the Lightsail ssh connect or local ssh explained above step 10 with Linux command to log into  `grader`  account:  `ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@18.220.11.125`
+-   Update server packages using the command: `$ sudo apt-get update`
+-   Upgrade the packages:` $ sudo apt-get upgrade`
+-   Remove un-used packages: `$ sudo apt-get autoremove`-   enable unattended updates: `$ sudo apt install unattended-upgrades`
 ### 12. Clone the catalog app 
 -   Create a new folder under the /www directory: `$ cd /var/www` then `$ sudo mkdir catalog`
 - change the owner to grader: `$ sudo chown -R grader:grader catalog`

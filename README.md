@@ -184,7 +184,17 @@ application.secret_key = 'Add your secret key'
 ### 19. Launch the app in the browser
 -  Start Apache2 service with the command: `$ sudo service apache2 restart`
 - Use the Host Name address http://ec2-18-220-11-125.us-east-2.compute.amazonaws.com (not just the public IP e.g., 18.220.11.125).
-
+### 20. Get private key to be included in the final submission:
+- At your vagrant file folder, after you vagrant up and vagrant ssh, go into the .ssh folder by `$cd .ssh`
+- Then open and copy the file content to include it in your project submission. `$nano udacity_key.rsa`. This is the private key and looks like this:
+```
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpgIBAAKCAQEA6dPH0yD0t/z2sk52SeOaCZXLcWngStHv/mGbts03r+eFPC4e
+...........
+...........
+gpyuPc/KaursPRFkitxOYqM2gfV2WDv9Wln4S1RTdxux8SIKqPd/7w2JWPmsyYPV
+-----END RSA PRIVATE KEY-----
+```
 ## Useful tips for this project
 - Discard local changes for a specific file by running `git checkout filename` before pull the updates from github `$ git pull origin master`
 - If there were errors running the site, used the command below to see what it is:

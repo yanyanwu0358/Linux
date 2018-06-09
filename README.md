@@ -102,9 +102,12 @@ Use  Amazon Lightsail to set up  a baseline Ubuntu Linux server instance and  to
 
 ### 11. Update Linux server
 -   Connect to the linux server via either the Lightsail ssh connect or local ssh explained above step 10 with Linux command to log into  `grader`  account:  `ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@18.220.11.125`
--   Update server packages using the command: `$ sudo apt-get update`
--   Upgrade the packages:` $ sudo apt-get upgrade`
--   Remove un-used packages: `$ sudo apt-get autoremove`-   enable unattended updates: `$ sudo apt install unattended-upgrades`
+-   Update server packages using the following commands in sequence to prevent updates shown as required even after running both : `$ sudo apt-get update` and ` $ sudo apt-get upgrade`:
+```
+sudo apt-get dist-upgrade
+sudo apt-get update
+sudo apt-get upgrade
+```
 ### 12. Clone the catalog app 
 -   Create a new folder under the /www directory: `$ cd /var/www` then `$ sudo mkdir catalog`
 - change the owner to grader: `$ sudo chown -R grader:grader catalog`
@@ -218,4 +221,5 @@ gpyuPc/KaursPRFkitxOYqM2gfV2WDv9Wln4S1RTdxux8SIKqPd/7w2JWPmsyYPV
  3. How to deploy a flask application on Lightsail: 
 https://hk.saowen.com/a/0a0048ca7141440d0553425e8df46b16cdf4c13f50df4c5888256393d34bb1b9
 4. How to add path of a python file within another python file: https://blender.stackexchange.com/questions/31964/problem-with-paths-in-my-script-relative-to-local-python-file](https://blender.stackexchange.com/questions/31964/problem-with-paths-in-my-script-relative-to-local-python-file)
+5. Use dist-upgrade when updates still show as required even after running  sudo apt-get update and sudo apt-get upgrade: https://askubuntu.com/questions/449032/29-packages-can-be-updated-how?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 
